@@ -116,14 +116,29 @@ try {
     addressBookObj = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
     addressBookArray.push(addressBookObj);
-    // console.log(addressBookObj.toString());
+
     addressBookObj = new Address_Book("Manu", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
     addressBookArray.push(addressBookObj);
-    // console.log("----> " + addressBookArray);
+
+    addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
+    console.log("---------------------------");
+    // let addressBookEdit = addressBookArray.filter(dummyObj => dummyObj._firstName == "Samyak");
+    // addressBookEdit.firstName = "Sammmmmy";
+    // console.log("edited object is ------> " + addressBookEdit);    
+    // addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
+    changeFirstName("Samyak", "Sammy");
     addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
 } catch (e) {
     console.error(e);
 }
 
+function changeFirstName(firstName, updatedFirstName) {
+    for (var i in addressBookArray) {
+      if (addressBookArray[i]._firstName == firstName) {
+         addressBookArray[i]._firstName = updatedFirstName;
+         break; //Stop this loop, we found it!
+      }
+    }
+ }
 
