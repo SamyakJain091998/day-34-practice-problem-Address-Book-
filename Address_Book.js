@@ -109,12 +109,19 @@ class Address_Book{
     }
 }
 
-let addressBook;
+let addressBookObj;
+let addressBookArray = new Array();
 
 try {
-    addressBook = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
+    addressBookObj = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
-    console.log(addressBook.toString());
+    addressBookArray.push(addressBookObj);
+    // console.log(addressBookObj.toString());
+    addressBookObj = new Address_Book("Manu", "Jain", "Dusshehra @Maidan", "Ujjain",
+        "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
+    addressBookArray.push(addressBookObj);
+    // console.log("----> " + addressBookArray);
+    addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
 } catch (e) {
     console.error(e);
 }
