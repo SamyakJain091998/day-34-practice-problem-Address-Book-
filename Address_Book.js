@@ -168,11 +168,17 @@ try {
     console.log("-------------DISPLAYING COUNT BY STATE--------------");
     countContactsByState("Madhya Pradesh");
     
-    console.log("-------------SORTING BASED ON PARAMETERS--------------");
-    
     // console.log("Sorting ------>" + addressBookArray.sort(dummyObj => dummyObj.eMail));
-    console.log(addressBookArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
 
+    console.log("-------------SORTING BASED ON firstName--------------");
+    console.log(addressBookArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
+    console.log("-------------SORTING BASED ON city--------------");
+    console.log(addressBookArray.sort((a, b) => a.city.localeCompare(b.city)));
+    console.log("-------------SORTING BASED ON state--------------");
+    console.log(addressBookArray.sort((a, b) => a.state.localeCompare(b.state)));
+    console.log("-------------SORTING BASED ON zip--------------");
+    // console.log(addressBookArray.sort((a, b) => a.zip.localeCompare(b.zip)));
+    console.log(addressBookArray.sort(dummyObj => dummyObj.zip).reverse());
 
 } catch (e) {
     console.error(e);
