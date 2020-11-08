@@ -168,6 +168,12 @@ try {
     console.log("-------------DISPLAYING COUNT BY STATE--------------");
     countContactsByState("Madhya Pradesh");
     
+    console.log("-------------SORTING BASED ON PARAMETERS--------------");
+    
+    // console.log("Sorting ------>" + addressBookArray.sort(dummyObj => dummyObj.eMail));
+    console.log(addressBookArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
+
+
 } catch (e) {
     console.error(e);
 }
