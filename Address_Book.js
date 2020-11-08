@@ -129,6 +129,10 @@ try {
     console.log("-------------DELETING AN ELEMENT--------------");
     deleteObjectUsingFirstName("Sammy");
     addressBookArray.forEach(dummyObj => console.log("---->" + dummyObj + "\n"));
+
+    console.log("-------------COUNTING THE NUMBER OF CONTACTS--------------");
+    let numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
+    console.log(numberOfContacts);
 } catch (e) {
     console.error(e);
 }
