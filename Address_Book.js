@@ -122,15 +122,23 @@ try {
     addressBookArray.push(addressBookObj);
 
     addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
-    console.log("---------------------------");
-    // let addressBookEdit = addressBookArray.filter(dummyObj => dummyObj._firstName == "Samyak");
-    // addressBookEdit.firstName = "Sammmmmy";
-    // console.log("edited object is ------> " + addressBookEdit);    
-    // addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
+    console.log("-------------UPDATING AN ELEMENT--------------");
     changeFirstName("Samyak", "Sammy");
     addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
+
+    console.log("-------------DELETING AN ELEMENT--------------");
+    deleteObjectUsingFirstName("Sammy");
+    addressBookArray.forEach(dummyObj => console.log("---->" + dummyObj + "\n"));
 } catch (e) {
     console.error(e);
+}
+
+function deleteObjectUsingFirstName(firstName) {
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName == firstName) {
+            addressBookArray.splice(i, 1);
+        }
+    }
 }
 
 function changeFirstName(firstName, updatedFirstName) {
