@@ -105,7 +105,7 @@ class Address_Book{
     toString() {
         return "firstName => " + this.firstName + ", lastName => " + this.lastName + ", address => " + this.address
             + ", city => " + this.city + ", state => " + this.state + ", zip => " + this.zip + ", phoneNumber => " + this.phoneNumber
-            + ", eMail => " + this.eMail;
+            + ", eMail => " + this.eMail + "\n";
     }
 }
 
@@ -153,10 +153,22 @@ try {
     numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
     console.log(numberOfContacts);
     
+    searchAddressBookByCity("Ujjain");
+    searchAddressBookByState("Madhya Pradesh");
+
 } catch (e) {
     console.error(e);
 }
 
+function searchAddressBookByCity(cityName){
+    console.log("++++++++++++++++++++++++++ Contacts in " + cityName + " ++++++++++++++++++++++++++");
+    console.log(addressBookArray.filter(dummyObj => dummyObj.city == cityName).toString());
+}
+
+function searchAddressBookByState(stateName){
+    console.log("++++++++++++++++++++++++++ Contacts in " + stateName + " ++++++++++++++++++++++++++");
+    console.log(addressBookArray.filter(dummyObj => dummyObj.state == stateName).toString());
+}
 
 function contactExistStatus(localAddressBookObject) {
     for (let i = 0; i < addressBookArray.length; i++) {
