@@ -15,7 +15,7 @@ class Address_Book{
     }
 
     set firstName(firstName) {
-        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        let firstNameRegex = RegExp('^[A-Z]{1}[A-Za-z]{2,}$');
         if (firstNameRegex.test(firstName)) {
             this._firstName = firstName;
         }
@@ -27,7 +27,7 @@ class Address_Book{
     }
 
     set lastName(lastName) {
-        let lastNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        let lastNameRegex = RegExp('^[A-Z]{1}[A-Za-z]{2,}$');
         if (lastNameRegex.test(lastName)) {
             this._lastName = lastName;
         }
@@ -113,6 +113,8 @@ let addressBookObj;
 let addressBookArray = new Array();
 
 try {
+    
+    console.log("-------------ADDING CONTACTS--------------");
     addressBookObj = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
     addressBookArray.push(addressBookObj);
@@ -126,16 +128,46 @@ try {
     changeFirstName("Samyak", "Sammy");
     addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
 
-    console.log("-------------DELETING AN ELEMENT--------------");
-    deleteObjectUsingFirstName("Sammy");
-    addressBookArray.forEach(dummyObj => console.log("---->" + dummyObj + "\n"));
+    // console.log("-------------DELETING AN ELEMENT--------------");
+    // deleteObjectUsingFirstName("Sammy");
+    // addressBookArray.forEach(dummyObj => console.log("---->" + dummyObj + "\n"));
 
     console.log("-------------COUNTING THE NUMBER OF CONTACTS--------------");
     let numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
     console.log(numberOfContacts);
+
+    console.log("-------------CHECKING FOR DUPLICATE CONTACTS--------------");
+    addressBookObj = new Address_Book("DummyFirstName", "DummyLastName", "Maidan", "Ujjn",
+        "Madhya Pradesh", 456010, 6263651607, "jainsamyak941998@gmail.com");
+
+    if (contactExistStatus(addressBookObj)) {
+        console.log("Contact already exist in the address Book. Please enter a valid entry!!!");
+        return;
+    } else {
+        addressBookArray.push(addressBookObj);
+    }
+    console.log("UPDATED CONTACT LIST---->");
+    addressBookArray.forEach(dummyObj => console.log(dummyObj + "\n"));
+    
+    console.log("-------------COUNTING THE NUMBER OF CONTACTS--------------");
+    numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
+    console.log(numberOfContacts);
+    
 } catch (e) {
     console.error(e);
 }
+
+
+function contactExistStatus(localAddressBookObject) {
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName == localAddressBookObject.firstName
+            && addressBookArray[i].lastName == localAddressBookObject.lastName) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 function deleteObjectUsingFirstName(firstName) {
     for (let i = 0; i < addressBookArray.length; i++) {
@@ -144,6 +176,7 @@ function deleteObjectUsingFirstName(firstName) {
         }
     }
 }
+
 
 function changeFirstName(firstName, updatedFirstName) {
     for (var i in addressBookArray) {
