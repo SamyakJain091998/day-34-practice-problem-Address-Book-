@@ -155,10 +155,32 @@ try {
     
     searchAddressBookByCity("Ujjain");
     searchAddressBookByState("Madhya Pradesh");
+    console.log("\n");
+    console.log("-------------DISPLAYING BY THE CITY--------------");
+    let grouped = groupBy(addressBookArray, addressBookObject => addressBookObject.city);
+    console.log(grouped.get("Ujjain"));
+    console.log("-------------DISPLAYING BY THE STATE--------------");
+    grouped = groupBy(addressBookArray, addressBookObject => addressBookObject.state);
+    console.log(grouped.get("Madhya Pradesh"));
 
 } catch (e) {
     console.error(e);
 }
+
+function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+         const key = keyGetter(item);
+         const collection = map.get(key);
+         if (!collection) {
+             map.set(key, [item]);
+         } else {
+             collection.push(item);
+         }
+    });
+    return map;
+}
+
 
 function searchAddressBookByCity(cityName){
     console.log("++++++++++++++++++++++++++ Contacts in " + cityName + " ++++++++++++++++++++++++++");
