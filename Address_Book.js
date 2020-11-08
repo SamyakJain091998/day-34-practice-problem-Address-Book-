@@ -162,7 +162,12 @@ try {
     console.log("-------------DISPLAYING BY THE STATE--------------");
     grouped = groupBy(addressBookArray, addressBookObject => addressBookObject.state);
     console.log(grouped.get("Madhya Pradesh"));
-
+    console.log("\n");
+    console.log("-------------DISPLAYING COUNT BY CITY--------------");
+    countContactsByCity("Ujjain");
+    console.log("-------------DISPLAYING COUNT BY STATE--------------");
+    countContactsByState("Madhya Pradesh");
+    
 } catch (e) {
     console.error(e);
 }
@@ -181,13 +186,24 @@ function groupBy(list, keyGetter) {
     return map;
 }
 
+function countContactsByCity(cityName) {
+    console.log("++++++++++++++++++++++++++ Count of Contacts in " + cityName + " ++++++++++++++++++++++++++");
+    console.log(addressBookArray.filter(dummyObj => dummyObj.city == cityName)
+        .reduce((count, addressBookObject) => count += 1, 0));
+}
 
-function searchAddressBookByCity(cityName){
+function countContactsByState(stateName) {
+    console.log("++++++++++++++++++++++++++ Count of Contacts in " + stateName + " ++++++++++++++++++++++++++");
+    console.log(addressBookArray.filter(dummyObj => dummyObj.state == stateName)
+        .reduce((count, addressBookObject) => count += 1, 0));
+}
+
+function searchAddressBookByCity(cityName) {
     console.log("++++++++++++++++++++++++++ Contacts in " + cityName + " ++++++++++++++++++++++++++");
     console.log(addressBookArray.filter(dummyObj => dummyObj.city == cityName).toString());
 }
 
-function searchAddressBookByState(stateName){
+function searchAddressBookByState(stateName) {
     console.log("++++++++++++++++++++++++++ Contacts in " + stateName + " ++++++++++++++++++++++++++");
     console.log(addressBookArray.filter(dummyObj => dummyObj.state == stateName).toString());
 }
