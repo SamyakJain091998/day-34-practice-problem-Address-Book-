@@ -1,4 +1,4 @@
-class Address_Book{
+class Address_Book {
     constructor(...params) {
         this.firstName = params[0];
         this.lastName = params[1];
@@ -113,7 +113,7 @@ let addressBookObj;
 let addressBookArray = new Array();
 
 try {
-    
+
     console.log("-------------ADDING CONTACTS--------------");
     addressBookObj = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
@@ -133,7 +133,7 @@ try {
     // addressBookArray.forEach(dummyObj => console.log("---->" + dummyObj + "\n"));
 
     console.log("-------------COUNTING THE NUMBER OF CONTACTS--------------");
-    let numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
+    let numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count += 1, 0);
     console.log(numberOfContacts);
 
     console.log("-------------CHECKING FOR DUPLICATE CONTACTS--------------");
@@ -148,11 +148,11 @@ try {
     }
     console.log("UPDATED CONTACT LIST---->");
     addressBookArray.forEach(dummyObj => console.log(dummyObj + "\n"));
-    
+
     console.log("-------------COUNTING THE NUMBER OF CONTACTS--------------");
-    numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count+=1, 0);
+    numberOfContacts = addressBookArray.reduce((count, addressBookObject) => count += 1, 0);
     console.log(numberOfContacts);
-    
+
     searchAddressBookByCity("Ujjain");
     searchAddressBookByState("Madhya Pradesh");
     console.log("\n");
@@ -167,7 +167,7 @@ try {
     countContactsByCity("Ujjain");
     console.log("-------------DISPLAYING COUNT BY STATE--------------");
     countContactsByState("Madhya Pradesh");
-    
+
     // console.log("Sorting ------>" + addressBookArray.sort(dummyObj => dummyObj.eMail));
 
     console.log("-------------SORTING BASED ON firstName--------------");
@@ -187,13 +187,13 @@ try {
 function groupBy(list, keyGetter) {
     const map = new Map();
     list.forEach((item) => {
-         const key = keyGetter(item);
-         const collection = map.get(key);
-         if (!collection) {
-             map.set(key, [item]);
-         } else {
-             collection.push(item);
-         }
+        const key = keyGetter(item);
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
     });
     return map;
 }
@@ -242,10 +242,10 @@ function deleteObjectUsingFirstName(firstName) {
 
 function changeFirstName(firstName, updatedFirstName) {
     for (var i in addressBookArray) {
-      if (addressBookArray[i]._firstName == firstName) {
-         addressBookArray[i]._firstName = updatedFirstName;
-         break;
-      }
+        if (addressBookArray[i]._firstName == firstName) {
+            addressBookArray[i]._firstName = updatedFirstName;
+            break;
+        }
     }
- }
+}
 
