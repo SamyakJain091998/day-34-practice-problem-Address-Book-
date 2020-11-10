@@ -244,7 +244,7 @@ function changeFirstName(firstName, updatedFirstName) {
     for (var i in addressBookArray) {
       if (addressBookArray[i]._firstName == firstName) {
          addressBookArray[i]._firstName = updatedFirstName;
-         break; //Stop this loop, we found it!
+         break;
       }
     }
  }
