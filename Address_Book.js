@@ -99,7 +99,11 @@ class Address_Book {
     }
 
     set eMail(eMail) {
-        this._eMail = eMail;
+        const emailRegex = RegExp(
+            "^[a-z][0-9a-z_+-]*\\.?[0-9a-z_+-]+@\\w+(\\.[a-z]{2,}){1,2}$"
+        );
+        if(emailRegex.test(eMail)) this._eMail = eMail;
+        else throw "eMail is incorrect";
     }
 
     toString() {
@@ -118,9 +122,9 @@ try {
     addressBookObj = new Address_Book("Samyak", "Jain", "Dusshehra @Maidan", "Ujjain",
         "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
     addressBookArray.push(addressBookObj);
-
+    
     addressBookObj = new Address_Book("Manu", "Jain", "Dusshehra @Maidan", "Ujjain",
-        "Madhya Pradesh", 560100, 7580813216, "abc@gmail.com");
+        "Madhya Pradesh", 560100, 7580813216, "abc@gmail.");
     addressBookArray.push(addressBookObj);
 
     addressBookArray.forEach(dummyObj => console.log("=====>" + dummyObj + "\n"));
